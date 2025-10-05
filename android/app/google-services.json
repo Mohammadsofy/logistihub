@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381948043789",
+    "project_id": "complex-88805",
+    "storage_bucket": "complex-88805.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381948043789:android:cab96d134b1bdc5b36eb44",
+        "android_client_info": {
+          "package_name": "com.example.complex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC93Xrufin7AD1nwDK9ftpGSqBTPczx3bk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
