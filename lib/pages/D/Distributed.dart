@@ -185,8 +185,8 @@ class _DistributorState extends State<Distributor> {
                   Row(children: [
                     const Text("مجموع"),
                     const SizedBox(width: 103),
-                    buildBox("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
-                    buildBox("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
+                    buildsum("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
+                    buildsum("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
                   ]),
                   const SizedBox(height: 30),
 
@@ -208,6 +208,19 @@ class _DistributorState extends State<Distributor> {
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         border: Border.all(width: 1),
+        borderRadius: const BorderRadius.horizontal(),
+      ),
+      alignment: Alignment.center,
+      child: Text(text, textAlign: TextAlign.center,style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+    );
+  }
+  Widget buildsum(String text) {
+    return Container(
+      height: 50,
+      width: 70,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.red, width: 3),
         borderRadius: const BorderRadius.horizontal(),
       ),
       alignment: Alignment.center,

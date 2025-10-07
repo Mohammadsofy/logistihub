@@ -150,11 +150,12 @@ class _DistributoroneState extends State<Distributorone> {
                     buildBox("$restaurantCucumber"),
                     buildBox("$restaurantTomato"),
                     buildBox("$restaurantPotato"),
-
-
+                    IconButton(
+                      icon: const Icon(Icons.restart_alt, color: Colors.red),
+                      onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
+                    ),
                   ]),
                   const SizedBox(height: 30),
-
                   Row(children: [
                     const Text('RESTAURANTONE'),
                     const SizedBox(width: 25),
@@ -164,10 +165,12 @@ class _DistributoroneState extends State<Distributorone> {
                     buildBox("$restaurantoneCucumber"),
                     buildBox("$restaurantoneTomato"),
                     buildBox("$restaurantonePotato"),
-
+                    IconButton(
+                      icon: const Icon(Icons.restart_alt, color: Colors.red),
+                      onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
+                    ),
                   ]),
                   const SizedBox(height: 30),
-
                   Row(children: [
                     const Text('RESTAURANTTWO'),
                     const SizedBox(width: 23),
@@ -177,10 +180,12 @@ class _DistributoroneState extends State<Distributorone> {
                     buildBox("$restauranttwoCucumber"),
                     buildBox("$restauranttwoTomato"),
                     buildBox("$restauranttwoPotato"),
-
+                    IconButton(
+                      icon: const Icon(Icons.restart_alt, color: Colors.red),
+                      onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
+                    ),
                   ]),
                   const SizedBox(height: 30),
-
                   Row(children: [
                     const Text('RESTAURANTTHREE'),
                     const SizedBox(width: 10),
@@ -190,22 +195,23 @@ class _DistributoroneState extends State<Distributorone> {
                     buildBox("$restaurantthreeCucumber"),
                     buildBox("$restaurantthreeTomato"),
                     buildBox("$restaurantthreePotato"),
-
+                    IconButton(
+                      icon: const Icon(Icons.restart_alt, color: Colors.red),
+                      onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
+                    ),
                   ]),
                   const SizedBox(height: 30),
                   Row(children: [
                     const Text("مجموع"),
                     const SizedBox(width: 103),
-                    buildBox("${restaurantCarrot + restaurantoneCarrot + restauranttwoCarrot + restaurantthreeCarrot}"),
-                    buildBox("${restaurantOnion + restaurantoneOnion + restauranttwoOnion + restaurantthreeOnion}"),
-                    buildBox("${restaurantGarlic + restaurantoneGarlic + restauranttwoGarlic + restaurantthreeGarlic}"),
-                    buildBox("${restaurantCucumber + restaurantoneCucumber + restauranttwoCucumber + restaurantthreeCucumber}"),
-                    buildBox("${restaurantTomato + restaurantoneTomato + restauranttwoTomato + restaurantthreeTomato}"),
-                    buildBox("${restaurantPotato + restaurantonePotato + restauranttwoPotato + restaurantthreePotato}"),
+                    buildsum("${restaurantCarrot + restaurantoneCarrot + restauranttwoCarrot + restaurantthreeCarrot}"),
+                    buildsum("${restaurantOnion + restaurantoneOnion + restauranttwoOnion + restaurantthreeOnion}"),
+                    buildsum("${restaurantGarlic + restaurantoneGarlic + restauranttwoGarlic + restaurantthreeGarlic}"),
+                    buildsum("${restaurantCucumber + restaurantoneCucumber + restauranttwoCucumber + restaurantthreeCucumber}"),
+                    buildsum("${restaurantTomato + restaurantoneTomato + restauranttwoTomato + restaurantthreeTomato}"),
+                    buildsum("${restaurantPotato + restaurantonePotato + restauranttwoPotato + restaurantthreePotato}"),
                   ]),
                   const SizedBox(height: 30),
-
-
                 ],
               ),
             ),
@@ -214,8 +220,6 @@ class _DistributoroneState extends State<Distributorone> {
       ),
     );
   }
-
-
   Widget buildBox(String text) {
     return Container(
       height: 50,
@@ -226,7 +230,23 @@ class _DistributoroneState extends State<Distributorone> {
         borderRadius: const BorderRadius.horizontal(),
       ),
       alignment: Alignment.center,
-      child: Text(text, textAlign: TextAlign.center),
+      child: Text(text, textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+    );
+  }
+  Widget buildsum(String text) {
+    return Container(
+      height: 50,
+      width: 70,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.red, width: 3),
+        borderRadius: const BorderRadius.horizontal(),
+      ),
+      alignment: Alignment.center,
+      child: Text(text, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
     );
   }
 }
+
+
+
