@@ -12,27 +12,37 @@ class Distributorone extends StatefulWidget {
 }
 
 class _DistributoroneState extends State<Distributorone> {
-  //
+  //جزر
   int restaurantCarrot = 0;
   int restaurantoneCarrot = 0;
   int restauranttwoCarrot = 0;
   int restaurantthreeCarrot = 0;
-
-  int restaurantChicken=0;
-  int restaurantonecheck=0;
-  int restauranttwocheck=0;
-  int restaurantthreecheck=0;
-
-
+  //بصل
   int restaurantOnion = 0;
   int restaurantoneOnion = 0;
   int restauranttwoOnion = 0;
   int restaurantthreeOnion = 0;
-
+  //ثوم
   int restaurantGarlic = 0;
   int restaurantoneGarlic = 0;
   int restauranttwoGarlic = 0;
   int restaurantthreeGarlic = 0;
+  //خيار
+  int restaurantCucumber = 0;
+  int restaurantoneCucumber = 0;
+  int restauranttwoCucumber = 0;
+  int restaurantthreeCucumber = 0;
+  //بندورة
+  int restaurantTomato = 0;
+  int restaurantoneTomato = 0;
+  int restauranttwoTomato = 0;
+  int restaurantthreeTomato = 0;
+  //بطاطه
+  int restaurantPotato = 0;
+  int restaurantonePotato = 0;
+  int restauranttwoPotato = 0;
+  int restaurantthreePotato = 0;
+
 
 
 
@@ -50,9 +60,12 @@ class _DistributoroneState extends State<Distributorone> {
       final data = res1.data()!;
       setState(() {
         restaurantCarrot = data['جزر'] ?? 0;
-        restaurantChicken = data['جاج'] ?? 0;
         restaurantOnion = data['بصل'] ?? 0;
         restaurantGarlic = data['ثوم'] ?? 0;
+        restaurantCucumber = data['خيار'] ?? 0;
+        restaurantTomato = data['بندورة'] ?? 0;
+        restaurantPotato = data['بطاطة'] ?? 0;
+
       });
     }
   }
@@ -77,9 +90,11 @@ class _DistributoroneState extends State<Distributorone> {
     if (confirmed == true) {
       await firestore.collection('restaurants').doc(uid).update({
         'جزر': 0,
-        'جاج': 0,
         'بصل': 0,
-        'ثوم': 0,});
+        'ثوم': 0,
+      'خيار':0,
+      'بندورة':0,
+      'بطاطة':0});
     }
     loadData();
   }
@@ -117,12 +132,11 @@ class _DistributoroneState extends State<Distributorone> {
                     offset: const Offset(143, 0),
                     child: Row(children: [
                       buildBox("جزر"),
-                      buildBox("جاج"),
                       buildBox("بصل"),
                       buildBox("ثوم"),
                       buildBox("خيار"),
                       buildBox("بندورة"),
-                      buildBox("لحمة"),
+                      buildBox("بطاطة"),
                     ]),
                   ),
                   const SizedBox(height: 30),
@@ -131,9 +145,12 @@ class _DistributoroneState extends State<Distributorone> {
                     const Text('RESTAURANT'),
                     const SizedBox(width: 53),
                     buildBox("$restaurantCarrot"),
-                    buildBox("$restaurantChicken"),
                     buildBox("$restaurantOnion"),
                     buildBox("$restaurantGarlic"),
+                    buildBox("$restaurantCucumber"),
+                    buildBox("$restaurantTomato"),
+                    buildBox("$restaurantPotato"),
+
 
                   ]),
                   const SizedBox(height: 30),
@@ -142,9 +159,12 @@ class _DistributoroneState extends State<Distributorone> {
                     const Text('RESTAURANTONE'),
                     const SizedBox(width: 25),
                     buildBox("$restaurantoneCarrot"),
-                    buildBox("$restaurantonecheck"),
                     buildBox("$restaurantoneOnion"),
                     buildBox("$restaurantoneGarlic"),
+                    buildBox("$restaurantoneCucumber"),
+                    buildBox("$restaurantoneTomato"),
+                    buildBox("$restaurantonePotato"),
+
                   ]),
                   const SizedBox(height: 30),
 
@@ -152,9 +172,12 @@ class _DistributoroneState extends State<Distributorone> {
                     const Text('RESTAURANTTWO'),
                     const SizedBox(width: 23),
                     buildBox("$restauranttwoCarrot"),
-                    buildBox("$restauranttwocheck"),
                     buildBox("$restauranttwoOnion"),
                     buildBox("$restauranttwoGarlic"),
+                    buildBox("$restauranttwoCucumber"),
+                    buildBox("$restauranttwoTomato"),
+                    buildBox("$restauranttwoPotato"),
+
                   ]),
                   const SizedBox(height: 30),
 
@@ -162,9 +185,11 @@ class _DistributoroneState extends State<Distributorone> {
                     const Text('RESTAURANTTHREE'),
                     const SizedBox(width: 10),
                     buildBox("$restaurantthreeCarrot"),
-                    buildBox("$restaurantthreecheck"),
                     buildBox("$restaurantthreeOnion"),
                     buildBox("$restaurantthreeGarlic"),
+                    buildBox("$restaurantthreeCucumber"),
+                    buildBox("$restaurantthreeTomato"),
+                    buildBox("$restaurantthreePotato"),
 
                   ]),
                   const SizedBox(height: 30),
@@ -172,9 +197,11 @@ class _DistributoroneState extends State<Distributorone> {
                     const Text("مجموع"),
                     const SizedBox(width: 103),
                     buildBox("${restaurantCarrot + restaurantoneCarrot + restauranttwoCarrot + restaurantthreeCarrot}"),
-                    buildBox("${restaurantChicken + restaurantonecheck + restauranttwocheck + restaurantthreecheck}"),
                     buildBox("${restaurantOnion + restaurantoneOnion + restauranttwoOnion + restaurantthreeOnion}"),
                     buildBox("${restaurantGarlic + restaurantoneGarlic + restauranttwoGarlic + restaurantthreeGarlic}"),
+                    buildBox("${restaurantCucumber + restaurantoneCucumber + restauranttwoCucumber + restaurantthreeCucumber}"),
+                    buildBox("${restaurantTomato + restaurantoneTomato + restauranttwoTomato + restaurantthreeTomato}"),
+                    buildBox("${restaurantPotato + restaurantonePotato + restauranttwoPotato + restaurantthreePotato}"),
                   ]),
                   const SizedBox(height: 30),
 

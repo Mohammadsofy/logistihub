@@ -53,7 +53,25 @@ class _RestaurantthreeState extends State<Restaurantthree> {
   @override
   void initState() {
     super.initState();
-    numbers = List.filled(products.length, '0');  }
+    numbers = List.filled(products.length, '0');
+    loadData();
+  }
+  Future<void> loadData() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+    final uid = user.uid;
+
+    final doc = await FirebaseFirestore.instance.collection('restaurants').doc(uid).get();
+    if (doc.exists) {
+      final data = doc.data()!;
+      setState(() {
+        for (int i = 0; i < products.length; i++) {
+          final productName = products[i]['name']!;
+          numbers[i] = (data[productName] ?? 0).toString();
+        }
+      });
+    }
+  }
 
   Future<void> updateNumber(int index, String value) async {
     setState(() {
@@ -129,7 +147,14 @@ class _ProductBoxState extends State<ProductBox> {
   @override
   void initState() {
     super.initState();
-    controller = TextEditingController();
+    controller = TextEditingController(text: widget.savedNumber);
+  }
+  @override
+  void didUpdateWidget(covariant ProductBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.savedNumber != widget.savedNumber) {
+      controller.text = widget.savedNumber;
+    }
   }
 
   @override

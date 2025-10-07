@@ -13,27 +13,15 @@ class Distributor extends StatefulWidget {
 
 class _DistributorState extends State<Distributor> {
   //
-  int restaurantCarrot = 0;
-  int restaurantoneCarrot = 0;
-  int restauranttwoCarrot = 0;
-  int restaurantthreeCarrot = 0;
+  int restaurantMeat = 0;
+  int restaurantoneMeat = 0;
+  int restauranttwoMeat = 0;
+  int restaurantthreeMeat = 0;
 
   int restaurantChicken=0;
-  int restaurantonecheck=0;
-  int restauranttwocheck=0;
-  int restaurantthreecheck=0;
-
-
-  int restaurantOnion = 0;
-  int restaurantoneOnion = 0;
-  int restauranttwoOnion = 0;
-  int restaurantthreeOnion = 0;
-
-  int restaurantGarlic = 0;
-  int restaurantoneGarlic = 0;
-  int restauranttwoGarlic = 0;
-  int restaurantthreeGarlic = 0;
-
+  int restaurantoneChicken=0;
+  int restauranttwoChicken=0;
+  int restaurantthreeChicken=0;
 
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -57,31 +45,25 @@ class _DistributorState extends State<Distributor> {
     setState(() {
       if (res1.exists) {
         final data = res1.data()!;
-        restaurantCarrot = data['جزر'] ?? 0;
         restaurantChicken = data['جاج'] ?? 0;
-        restaurantOnion = data['بصل'] ?? 0;
-        restaurantGarlic = data['ثوم'] ?? 0;
+        restaurantMeat = data['لحمة'] ?? 0;
+
       }
       if (res2.exists) {
         final data = res2.data()!;
-        restaurantoneCarrot = data['جزر'] ?? 0;
-        restaurantonecheck = data['جاج'] ?? 0;
-        restaurantoneOnion = data['بصل'] ?? 0;
-        restaurantoneGarlic = data['ثوم'] ?? 0;
+        restaurantoneChicken= data['جاج'] ?? 0;
+        restaurantoneMeat = data['لحمة'] ?? 0;
+
       }
       if (res3.exists) {
         final data = res3.data()!;
-        restauranttwoCarrot = data['جزر'] ?? 0;
-        restauranttwocheck = data['جاج'] ?? 0;
-        restauranttwoOnion = data['بصل'] ?? 0;
-        restauranttwoGarlic = data['ثوم'] ?? 0;
+        restauranttwoChicken = data['جاج'] ?? 0;
+        restauranttwoMeat = data['لحمة'] ?? 0;
       }
       if (res4.exists) {
         final data = res4.data()!;
-        restaurantthreeCarrot = data['جزر'] ?? 0;
-        restaurantthreecheck = data['جاج'] ?? 0;
-        restaurantthreeOnion = data['بصل'] ?? 0;
-        restaurantthreeGarlic = data['ثوم'] ?? 0;
+        restaurantthreeChicken = data['جاج'] ?? 0;
+        restaurantthreeMeat = data['لحمة'] ?? 0;
       }
     });
   }
@@ -106,10 +88,9 @@ class _DistributorState extends State<Distributor> {
     );
     if (confirmed == true) {
       await firestore.collection('restaurants').doc(uid).update({
-        'جزر': 0,
+        'لحمة': 0,
         'جاج': 0,
-        'بصل': 0,
-        'ثوم': 0,});
+      });
     }
     loadData();
   }
@@ -146,13 +127,8 @@ class _DistributorState extends State<Distributor> {
                   Transform.translate(
                     offset: const Offset(143, 0),
                     child: Row(children: [
-                      buildBox("جزر"),
-                      buildBox("جاج"),
-                      buildBox("بصل"),
-                      buildBox("ثوم"),
-                      buildBox("خيار"),
-                      buildBox("بندورة"),
                       buildBox("لحمة"),
+                      buildBox("جاج"),
                     ]),
                   ),
                   const SizedBox(height: 30),
@@ -160,10 +136,8 @@ class _DistributorState extends State<Distributor> {
                   Row(children: [
                     const Text('RESTAURANT'),
                     const SizedBox(width: 53),
-                    buildBox("$restaurantCarrot"),
+                    buildBox("$restaurantMeat"),
                     buildBox("$restaurantChicken"),
-                    buildBox("$restaurantOnion"),
-                    buildBox("$restaurantGarlic"),
                     IconButton(
                       icon: const Icon(Icons.restart_alt, color: Colors.red),
                       onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
@@ -175,10 +149,8 @@ class _DistributorState extends State<Distributor> {
                   Row(children: [
                     const Text('RESTAURANTONE'),
                     const SizedBox(width: 25),
-                    buildBox("$restaurantoneCarrot"),
-                    buildBox("$restaurantonecheck"),
-                    buildBox("$restaurantoneOnion"),
-                    buildBox("$restaurantoneGarlic"),
+                    buildBox("$restaurantoneMeat"),
+                    buildBox("$restaurantoneChicken"),
                     IconButton(
                       icon: const Icon(Icons.restart_alt, color: Colors.red),
                       onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
@@ -189,10 +161,8 @@ class _DistributorState extends State<Distributor> {
                   Row(children: [
                     const Text('RESTAURANTTWO'),
                     const SizedBox(width: 23),
-                    buildBox("$restauranttwoCarrot"),
-                    buildBox("$restauranttwocheck"),
-                    buildBox("$restauranttwoOnion"),
-                    buildBox("$restauranttwoGarlic"),
+                    buildBox("$restauranttwoMeat"),
+                    buildBox("$restauranttwoChicken"),
                     IconButton(
                       icon: const Icon(Icons.restart_alt, color: Colors.red),
                       onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
@@ -203,10 +173,8 @@ class _DistributorState extends State<Distributor> {
                   Row(children: [
                     const Text('RESTAURANTTHREE'),
                     const SizedBox(width: 10),
-                    buildBox("$restaurantthreeCarrot"),
-                    buildBox("$restaurantthreecheck"),
-                    buildBox("$restaurantthreeOnion"),
-                    buildBox("$restaurantthreeGarlic"),
+                    buildBox("$restaurantthreeMeat"),
+                    buildBox("$restaurantthreeChicken"),
                     IconButton(
                       icon: const Icon(Icons.restart_alt, color: Colors.red),
                       onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
@@ -217,10 +185,8 @@ class _DistributorState extends State<Distributor> {
                   Row(children: [
                     const Text("مجموع"),
                     const SizedBox(width: 103),
-                    buildBox("${restaurantCarrot + restaurantoneCarrot + restauranttwoCarrot + restaurantthreeCarrot}"),
-                    buildBox("${restaurantChicken + restaurantonecheck + restauranttwocheck + restaurantthreecheck}"),
-                    buildBox("${restaurantOnion + restaurantoneOnion + restauranttwoOnion + restaurantthreeOnion}"),
-                    buildBox("${restaurantGarlic + restaurantoneGarlic + restauranttwoGarlic + restaurantthreeGarlic}"),
+                    buildBox("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
+                    buildBox("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
                   ]),
                   const SizedBox(height: 30),
 
