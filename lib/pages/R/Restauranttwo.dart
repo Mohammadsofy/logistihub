@@ -1,62 +1,82 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../logout.dart';
+import '../../logout.dart';
 
-class Distributor extends StatefulWidget {
-  const Distributor({super.key});
+class Restauranttwo extends StatefulWidget {
+  const Restauranttwo({super.key});
 
   @override
-  State<Distributor> createState() => _DistributorState();
+  State<Restauranttwo> createState() => _RestauranttwoState();
 }
 
-class _DistributorState extends State<Distributor> {
+class _RestauranttwoState extends State<Restauranttwo> {
   final products = [
     {
       'imageUrl': 'images/OIP.png',
+      'name': 'جزر'
     },
     {
       'imageUrl': 'images/OIP (1).png',
+      'name': 'جاج'
     },
     {
       'imageUrl': 'images/OIP (2).png',
+      'name': 'بصل'
     },
     {
       'imageUrl': 'images/OIP (3).png',
+      'name': 'ثوم'
     },
     {
       'imageUrl': 'images/OIP (4).jpg',
+      'name': 'خيار'
     },
     {
       'imageUrl': 'images/OIP (5).png',
+      'name': 'بندورة'
     },
     {
       'imageUrl': 'images/R.jpg',
+      'name': 'بطاطه'
     },
     {
       'imageUrl': 'images/R (1).jpg',
+      'name': 'لحمة'
     },
   ];
 
-  // قائمة أرقام المنتجات (نفس عدد المنتجات)
+
   List<String> numbers = [];
 
   @override
   void initState() {
     super.initState();
-    numbers = List.filled(products.length, '0'); // رقم افتراضي لكل منتج
-  }
+    numbers = List.filled(products.length, '0');  }
 
-  void updateNumber(int index, String value) {
+  Future<void> updateNumber(int index, String value) async {
     setState(() {
       numbers[index] = value;
     });
+    final user = FirebaseAuth.instance.currentUser;
+    if(user == null)return;
+    final uid = user.uid;
+    final productName= products[index]['name']!;
+    await FirebaseFirestore.instance
+        .collection('restaurants')
+    .doc(uid)
+        .set(
+      {productName: int.tryParse(value) ?? 0},
+      SetOptions(merge: true),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("RESTAURANT", style: TextStyle(color: Colors.white))),
+        title: const Center(child: Text("Restauranttwo", style: TextStyle(color: Colors.white))),
         backgroundColor: Colors.black,
         actions: const [LogoutButton()],
       ),
@@ -74,6 +94,7 @@ class _DistributorState extends State<Distributor> {
             final product = products[index];
             return ProductBox(
               imageUrl: product['imageUrl'] as String,
+              name: product['name'] as String,
               savedNumber: numbers[index],
               onSave: (value) => updateNumber(index, value),
             );
@@ -86,11 +107,13 @@ class _DistributorState extends State<Distributor> {
 
 class ProductBox extends StatefulWidget {
   final String imageUrl;
+  final String name;
   final String savedNumber;
   final ValueChanged<String> onSave;
 
   const ProductBox({
     super.key,
+    required this.name,
     required this.imageUrl,
     required this.savedNumber,
     required this.onSave,
@@ -149,6 +172,14 @@ class _ProductBoxState extends State<ProductBox> {
               ),
             ),
           ),
+          const SizedBox(height: 8),
+          Center(
+            child: Text(
+                widget.name,
+                style: const TextStyle(
+                  fontSize: 16,)),
+          ),
+
           const SizedBox(height: 8),
           Row(
             children: [

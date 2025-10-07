@@ -1,6 +1,10 @@
 //import 'package:firebase_core/firebase_core.dart';
-import 'package:complex/pages/Distributed.dart';
-import 'package:complex/pages/Restaurant.dart';
+import 'package:complex/pages/D/Distributed.dart';
+import 'package:complex/pages/D/Distributedone.dart';
+import 'package:complex/pages/R/Restaurant.dart';
+import 'package:complex/pages/R/Restaurantone.dart';
+import 'package:complex/pages/R/Restaurantthree.dart';
+import 'package:complex/pages/R/Restauranttwo.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,10 +54,30 @@ class _LoginPageState extends State<LoginPage> {
               context,
               MaterialPageRoute(builder: (context) => const Distributor()),
             );
+          } else if (role == 'distributorone') {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const Distributorone()),
+            );
           } else if (role == 'restaurant') {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const Restaurant()),
+            );
+          } else if (role == 'restaurantone') {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const Restaurantone()),
+            );
+          } else if (role == 'restauranttwo') {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const Restauranttwo()),
+            );
+          } else if (role == 'restaurantthree') {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const Restaurantthree()),
             );
           } else {
             setState(() {

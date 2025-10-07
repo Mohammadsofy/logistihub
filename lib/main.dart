@@ -1,4 +1,6 @@
-import 'package:complex/pages/Distributed.dart';
+import 'package:complex/pages/D/Distributed.dart';
+import 'package:complex/pages/D/Distributedone.dart';
+import 'package:complex/pages/R/Restaurant.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
