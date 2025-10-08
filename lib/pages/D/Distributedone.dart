@@ -45,21 +45,28 @@ class _DistributoroneState extends State<Distributorone> {
 
 
 
-
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+
+
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_){
-    loadData();});
+      loadData();});
   }
 
   Future<void> loadData() async {
+
     final res1 = await firestore.collection('restaurants').doc('dZaAycORyoQWtRtLN4r2qdm6Jlo1').get();
-    if (res1.exists) {
-      final data = res1.data()!;
-      setState(() {
+    final res2 = await firestore.collection('restaurants').doc('spuesGx3irRXQhkxVrEk1vtCdvZ2').get();
+    final res3 = await firestore.collection('restaurants').doc('S6T9EwZGopMgPsTFpZF01BVcpmn2').get();
+    final res4 = await firestore.collection('restaurants').doc('djXHszgUsCaqBb8ByJwJbjg1ec12').get();
+
+    setState(() {
+      if (res1.exists) {
+        final data = res1.data()!;
         restaurantCarrot = data['جزر'] ?? 0;
         restaurantOnion = data['بصل'] ?? 0;
         restaurantGarlic = data['ثوم'] ?? 0;
@@ -67,9 +74,40 @@ class _DistributoroneState extends State<Distributorone> {
         restaurantTomato = data['بندورة'] ?? 0;
         restaurantPotato = data['بطاطة'] ?? 0;
 
-      });
-    }
+      }
+      if (res2.exists) {
+        final data = res2.data()!;
+        restaurantoneCarrot = data['جزر'] ?? 0;
+        restaurantoneOnion = data['بصل'] ?? 0;
+        restaurantoneGarlic = data['ثوم'] ?? 0;
+        restaurantoneCucumber = data['خيار'] ?? 0;
+        restaurantoneTomato = data['بندورة'] ?? 0;
+        restaurantonePotato = data['بطاطة'] ?? 0;
+
+
+      }
+      if (res3.exists) {
+        final data = res3.data()!;
+        restauranttwoCarrot = data['جزر'] ?? 0;
+        restauranttwoOnion = data['بصل'] ?? 0;
+        restauranttwoGarlic = data['ثوم'] ?? 0;
+        restauranttwoCucumber = data['خيار'] ?? 0;
+        restauranttwoTomato = data['بندورة'] ?? 0;
+        restauranttwoPotato = data['بطاطة'] ?? 0;
+
+      }
+      if (res4.exists) {
+        final data = res4.data()!;
+        restaurantthreeCarrot = data['جزر'] ?? 0;
+        restaurantthreeOnion = data['بصل'] ?? 0;
+        restaurantthreeGarlic = data['ثوم'] ?? 0;
+        restaurantthreeCucumber = data['خيار'] ?? 0;
+        restaurantthreeTomato = data['بندورة'] ?? 0;
+        restaurantthreePotato = data['بطاطة'] ?? 0;
+      }
+    });
   }
+
   void resetRestaurant(String uid) async {
     final confirmed = await showDialog<bool>(
       context: context,
@@ -93,9 +131,10 @@ class _DistributoroneState extends State<Distributorone> {
         'جزر': 0,
         'بصل': 0,
         'ثوم': 0,
-      'خيار':0,
-      'بندورة':0,
-      'بطاطة':0});
+        'خيار': 0,
+        'بندورة': 0,
+        'بطاطة':0
+      });
     }
     loadData();
   }
@@ -159,8 +198,10 @@ class _DistributoroneState extends State<Distributorone> {
                         icon: const Icon(Icons.restart_alt, color: Colors.red),
                         onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
                       ),
+
                     ]),
                     const SizedBox(height: 30),
+
                     Row(children: [
                       const Text('RESTAURANTONE'),
                       const SizedBox(width: 25),
@@ -176,6 +217,7 @@ class _DistributoroneState extends State<Distributorone> {
                       ),
                     ]),
                     const SizedBox(height: 30),
+
                     Row(children: [
                       const Text('RESTAURANTTWO'),
                       const SizedBox(width: 23),
@@ -191,6 +233,7 @@ class _DistributoroneState extends State<Distributorone> {
                       ),
                     ]),
                     const SizedBox(height: 30),
+
                     Row(children: [
                       const Text('RESTAURANTTHREE'),
                       const SizedBox(width: 10),
@@ -204,11 +247,12 @@ class _DistributoroneState extends State<Distributorone> {
                         icon: const Icon(Icons.restart_alt, color: Colors.red),
                         onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
                       ),
+
                     ]),
                     const SizedBox(height: 30),
                     Row(children: [
                       const Text("المجموع"),
-                      const SizedBox(width: 103),
+                      const SizedBox(width: 95),
                       buildsum("${restaurantCarrot + restaurantoneCarrot + restauranttwoCarrot + restaurantthreeCarrot}"),
                       buildsum("${restaurantOnion + restaurantoneOnion + restauranttwoOnion + restaurantthreeOnion}"),
                       buildsum("${restaurantGarlic + restaurantoneGarlic + restauranttwoGarlic + restaurantthreeGarlic}"),
@@ -217,6 +261,8 @@ class _DistributoroneState extends State<Distributorone> {
                       buildsum("${restaurantPotato + restaurantonePotato + restauranttwoPotato + restaurantthreePotato}"),
                     ]),
                     const SizedBox(height: 30),
+
+
                   ],
                 ),
               ),
@@ -226,6 +272,8 @@ class _DistributoroneState extends State<Distributorone> {
       ),
     );
   }
+
+
   Widget buildBox(String text) {
     return Container(
       height: 50,
@@ -236,7 +284,7 @@ class _DistributoroneState extends State<Distributorone> {
         borderRadius: const BorderRadius.horizontal(),
       ),
       alignment: Alignment.center,
-      child: Text(text, textAlign: TextAlign.center, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+      child: Text(text, textAlign: TextAlign.center,style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
     );
   }
   Widget buildsum(String text) {
@@ -249,10 +297,7 @@ class _DistributoroneState extends State<Distributorone> {
         borderRadius: const BorderRadius.horizontal(),
       ),
       alignment: Alignment.center,
-      child: Text(text, textAlign: TextAlign.center, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+      child: Text(text, textAlign: TextAlign.center),
     );
   }
 }
-
-
-

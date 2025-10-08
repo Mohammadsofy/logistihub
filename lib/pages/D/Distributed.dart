@@ -189,7 +189,7 @@ class _DistributorState extends State<Distributor> {
                     const SizedBox(height: 30),
                     Row(children: [
                       const Text("المجموع"),
-                      const SizedBox(width: 103),
+                      const SizedBox(width: 95),
                       buildsum("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
                       buildsum("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
                     ]),
