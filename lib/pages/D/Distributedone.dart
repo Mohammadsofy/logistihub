@@ -156,7 +156,7 @@ class _DistributoroneState extends State<Distributorone> {
           await loadData();
         },
         child: SingleChildScrollView(
-
+          physics: const AlwaysScrollableScrollPhysics(),
           child: ScrollConfiguration(
             behavior: const MaterialScrollBehavior().copyWith(
               dragDevices: {
