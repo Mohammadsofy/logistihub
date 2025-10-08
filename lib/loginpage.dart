@@ -45,40 +45,25 @@ class _LoginPageState extends State<LoginPage> {
             .collection('users')
             .doc(user.uid)
             .get();
-
+//
         if (userData.exists) {
           final role = userData['role'] ?? '';
 
           if (role == 'distributed') {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const Distributor()),
-            );
+            Navigator.pushReplacementNamed(context, '/distributed');
           } else if (role == 'distributorone') {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const Distributorone()),
-            );
+            Navigator.pushReplacementNamed(context, '/distributedone');
+
           } else if (role == 'restaurant') {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const Restaurant()),
-            );
+            Navigator.pushReplacementNamed(context, '/restaurant');
+
           } else if (role == 'restaurantone') {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const Restaurantone()),
-            );
+            Navigator.pushReplacementNamed(context, '/restaurantone');
           } else if (role == 'restauranttwo') {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const Restauranttwo()),
-            );
+            Navigator.pushReplacementNamed(context, '/restauranttwo');
+
           } else if (role == 'restaurantthree') {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const Restaurantthree()),
-            );
+            Navigator.pushReplacementNamed(context, '/restaurantthree');
           } else {
             setState(() {
               _errorMessage = "هذا المستخدم ليس له صلاحية الدخول";

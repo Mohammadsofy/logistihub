@@ -72,7 +72,7 @@ class _DistributoroneState extends State<Distributorone> {
         restaurantGarlic = data['ثوم'] ?? 0;
         restaurantCucumber = data['خيار'] ?? 0;
         restaurantTomato = data['بندورة'] ?? 0;
-        restaurantPotato = data['بطاطة'] ?? 0;
+        restaurantPotato = data['بطاطه'] ?? 0;
 
       }
       if (res2.exists) {
@@ -82,7 +82,7 @@ class _DistributoroneState extends State<Distributorone> {
         restaurantoneGarlic = data['ثوم'] ?? 0;
         restaurantoneCucumber = data['خيار'] ?? 0;
         restaurantoneTomato = data['بندورة'] ?? 0;
-        restaurantonePotato = data['بطاطة'] ?? 0;
+        restaurantonePotato = data['بطاطه'] ?? 0;
 
 
       }
@@ -93,7 +93,7 @@ class _DistributoroneState extends State<Distributorone> {
         restauranttwoGarlic = data['ثوم'] ?? 0;
         restauranttwoCucumber = data['خيار'] ?? 0;
         restauranttwoTomato = data['بندورة'] ?? 0;
-        restauranttwoPotato = data['بطاطة'] ?? 0;
+        restauranttwoPotato = data['بطاطه'] ?? 0;
 
       }
       if (res4.exists) {
@@ -103,7 +103,7 @@ class _DistributoroneState extends State<Distributorone> {
         restaurantthreeGarlic = data['ثوم'] ?? 0;
         restaurantthreeCucumber = data['خيار'] ?? 0;
         restaurantthreeTomato = data['بندورة'] ?? 0;
-        restaurantthreePotato = data['بطاطة'] ?? 0;
+        restaurantthreePotato = data['بطاطه'] ?? 0;
       }
     });
   }
@@ -133,7 +133,7 @@ class _DistributoroneState extends State<Distributorone> {
         'ثوم': 0,
         'خيار': 0,
         'بندورة': 0,
-        'بطاطة':0
+        'بطاطه':0
       });
     }
     loadData();
@@ -180,7 +180,7 @@ class _DistributoroneState extends State<Distributorone> {
                         buildBox("ثوم"),
                         buildBox("خيار"),
                         buildBox("بندورة"),
-                        buildBox("بطاطة"),
+                        buildBox("بطاطه"),
                       ]),
                     ),
                     const SizedBox(height: 30),

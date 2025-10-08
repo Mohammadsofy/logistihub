@@ -164,8 +164,6 @@ class _ProductBoxState extends State<ProductBox> {
 
   void handleSave() {
     widget.onSave(controller.text.isEmpty ? '0' : controller.text);
-    // يمكنك مسح الحقل بعد الحفظ إذا أردت:
-    // controller.clear();
   }
 
   @override

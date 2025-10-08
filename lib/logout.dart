@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'loginpage.dart'; // تأكد مسار ملف LoginPage صح
+
 
 class LogoutButton extends StatelessWidget {
   const LogoutButton({super.key});
@@ -10,12 +10,10 @@ class LogoutButton extends StatelessWidget {
     return IconButton(
       icon: const Icon(Icons.logout),
       onPressed: () async {
-        // تسجيل الخروج من Firebase
         await FirebaseAuth.instance.signOut();
-        // العودة لصفحة تسجيل الدخول وحذف كل الصفحات السابقة
-        Navigator.pushAndRemoveUntil(
+        Navigator.pushNamedAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const LoginPage()),
+          "/Login",
               (route) => false,
         );
       },
