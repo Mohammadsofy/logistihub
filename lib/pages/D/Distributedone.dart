@@ -51,7 +51,8 @@ class _DistributoroneState extends State<Distributorone> {
   @override
   void initState() {
     super.initState();
-    loadData();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+    loadData();});
   }
 
   Future<void> loadData() async {
@@ -206,7 +207,7 @@ class _DistributoroneState extends State<Distributorone> {
                     ]),
                     const SizedBox(height: 30),
                     Row(children: [
-                      const Text("مجموع"),
+                      const Text("المجموع"),
                       const SizedBox(width: 103),
                       buildsum("${restaurantCarrot + restaurantoneCarrot + restauranttwoCarrot + restaurantthreeCarrot}"),
                       buildsum("${restaurantOnion + restaurantoneOnion + restauranttwoOnion + restaurantthreeOnion}"),

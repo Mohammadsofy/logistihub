@@ -54,7 +54,8 @@ class _RestaurantoneState extends State<Restaurantone> {
   void initState() {
     super.initState();
     numbers = List.filled(products.length, '0');
-    loadData();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      loadData();});
   }
 
   Future<void> updateNumber(int index, String value) async {
