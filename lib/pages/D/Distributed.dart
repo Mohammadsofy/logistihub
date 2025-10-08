@@ -107,91 +107,96 @@ class _DistributorState extends State<Distributor> {
         backgroundColor: Colors.black,
         actions: [LogoutButton()],
       ),
-      body: SingleChildScrollView(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await loadData();
+        },
+        child: SingleChildScrollView(
 
-        child: ScrollConfiguration(
-          behavior: const MaterialScrollBehavior().copyWith(
-            dragDevices: {
-              PointerDeviceKind.touch,
-              PointerDeviceKind.mouse,
-            },
-          ),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20, right: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+          child: ScrollConfiguration(
+            behavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {
+                PointerDeviceKind.touch,
+                PointerDeviceKind.mouse,
+              },
+            ),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20, left: 20, right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                  Transform.translate(
-                    offset: const Offset(143, 0),
-                    child: Row(children: [
-                      buildBox("لحمة"),
-                      buildBox("جاج"),
+                    Transform.translate(
+                      offset: const Offset(143, 0),
+                      child: Row(children: [
+                        buildBox("لحمة"),
+                        buildBox("جاج"),
+                      ]),
+                    ),
+                    const SizedBox(height: 30),
+
+                    Row(children: [
+                      const Text('RESTAURANT'),
+                      const SizedBox(width: 53),
+                      buildBox("$restaurantMeat"),
+                      buildBox("$restaurantChicken"),
+                      IconButton(
+                        icon: const Icon(Icons.restart_alt, color: Colors.red),
+                        onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
+                      ),
+
                     ]),
-                  ),
-                  const SizedBox(height: 30),
+                    const SizedBox(height: 30),
 
-                  Row(children: [
-                    const Text('RESTAURANT'),
-                    const SizedBox(width: 53),
-                    buildBox("$restaurantMeat"),
-                    buildBox("$restaurantChicken"),
-                    IconButton(
-                      icon: const Icon(Icons.restart_alt, color: Colors.red),
-                      onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
-                    ),
+                    Row(children: [
+                      const Text('RESTAURANTONE'),
+                      const SizedBox(width: 25),
+                      buildBox("$restaurantoneMeat"),
+                      buildBox("$restaurantoneChicken"),
+                      IconButton(
+                        icon: const Icon(Icons.restart_alt, color: Colors.red),
+                        onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
+                      ),
+                    ]),
+                    const SizedBox(height: 30),
 
-                  ]),
-                  const SizedBox(height: 30),
+                    Row(children: [
+                      const Text('RESTAURANTTWO'),
+                      const SizedBox(width: 23),
+                      buildBox("$restauranttwoMeat"),
+                      buildBox("$restauranttwoChicken"),
+                      IconButton(
+                        icon: const Icon(Icons.restart_alt, color: Colors.red),
+                        onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
+                      ),
+                    ]),
+                    const SizedBox(height: 30),
 
-                  Row(children: [
-                    const Text('RESTAURANTONE'),
-                    const SizedBox(width: 25),
-                    buildBox("$restaurantoneMeat"),
-                    buildBox("$restaurantoneChicken"),
-                    IconButton(
-                      icon: const Icon(Icons.restart_alt, color: Colors.red),
-                      onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
-                    ),
-                  ]),
-                  const SizedBox(height: 30),
+                    Row(children: [
+                      const Text('RESTAURANTTHREE'),
+                      const SizedBox(width: 10),
+                      buildBox("$restaurantthreeMeat"),
+                      buildBox("$restaurantthreeChicken"),
+                      IconButton(
+                        icon: const Icon(Icons.restart_alt, color: Colors.red),
+                        onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
+                      ),
 
-                  Row(children: [
-                    const Text('RESTAURANTTWO'),
-                    const SizedBox(width: 23),
-                    buildBox("$restauranttwoMeat"),
-                    buildBox("$restauranttwoChicken"),
-                    IconButton(
-                      icon: const Icon(Icons.restart_alt, color: Colors.red),
-                      onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
-                    ),
-                  ]),
-                  const SizedBox(height: 30),
-
-                  Row(children: [
-                    const Text('RESTAURANTTHREE'),
-                    const SizedBox(width: 10),
-                    buildBox("$restaurantthreeMeat"),
-                    buildBox("$restaurantthreeChicken"),
-                    IconButton(
-                      icon: const Icon(Icons.restart_alt, color: Colors.red),
-                      onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
-                    ),
-
-                  ]),
-                  const SizedBox(height: 30),
-                  Row(children: [
-                    const Text("مجموع"),
-                    const SizedBox(width: 103),
-                    buildsum("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
-                    buildsum("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
-                  ]),
-                  const SizedBox(height: 30),
+                    ]),
+                    const SizedBox(height: 30),
+                    Row(children: [
+                      const Text("مجموع"),
+                      const SizedBox(width: 103),
+                      buildsum("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
+                      buildsum("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
+                    ]),
+                    const SizedBox(height: 30),
 
 
-                ],
+                  ],
+                ),
               ),
             ),
           ),

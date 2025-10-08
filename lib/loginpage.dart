@@ -113,115 +113,122 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       //backgroundColor: const Color.fromARGB(255, 48, 0, 0),
       backgroundColor: Colors.white,
-      body: Center(
-        child: Container(
-          width: 340,
-          height: 500,
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: Colors.black, width: 2),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const Text(
-                "Login",
-                style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+      body: RefreshIndicator(
+        onRefresh: () async {
+          setState(() {
+            _errorMessage = null;
+          });
+        },
+        child: Center(
+          child: Container(
+            width: 340,
+            height: 500,
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(color: Colors.black, width: 2),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Text(
+                  "Login",
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
-              ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      style: TextStyle(color: Colors.black),
-                      controller: _usernameController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.person,color: Colors.black,),
-                        labelText: "اسم المستخدم",
-                        labelStyle: TextStyle(color: Colors.black),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'الرجاء إدخال اسم المستخدم';
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      style: TextStyle(color: Colors.black),
-                      controller: _passwordController,
-                      obscureText: !_showPass,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.lock,color: Colors.black,),
-                        labelText: "كلمة المرور",
-                        labelStyle: TextStyle(color: Colors.black),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _showPass ? Icons.visibility : Icons.visibility_off,
-                            color: Colors.black,
-                          ),
-
-                          onPressed: () {
-                            setState(() {
-                              _showPass = !_showPass;
-                            });
-                          },
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        style: TextStyle(color: Colors.black),
+                        controller: _usernameController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.person,color: Colors.black,),
+                          labelText: "اسم المستخدم",
+                          labelStyle: TextStyle(color: Colors.black),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'الرجاء إدخال اسم المستخدم';
+                          }
+                          return null;
+                        },
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'الرجاء إدخال كلمة المرور';
-                        }
-                        return null;
-                      },
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        style: TextStyle(color: Colors.black),
+                        controller: _passwordController,
+                        obscureText: !_showPass,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.lock,color: Colors.black,),
+                          labelText: "كلمة المرور",
+                          labelStyle: TextStyle(color: Colors.black),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _showPass ? Icons.visibility : Icons.visibility_off,
+                              color: Colors.black,
+                            ),
+
+                            onPressed: () {
+                              setState(() {
+                                _showPass = !_showPass;
+                              });
+                            },
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'الرجاء إدخال كلمة المرور';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      if (_errorMessage != null)
+                        Text(
+                          _errorMessage!,
+                          style: const TextStyle(color: Colors.red),
+                        ),
+                    ],
+                  ),
+                ),
+                _loading
+                    ? const CircularProgressIndicator()
+                    : ElevatedButton(
+                  onPressed: () async {
+                    if(_formKey.currentState!.validate()){
+                      await _login(
+                        _usernameController.text.trim(),
+                        _passwordController.text.trim(),
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 63, 63, 63),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3)
+                      )
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 15,
                     ),
-                    const SizedBox(height: 20),
-                    if (_errorMessage != null)
-                      Text(
-                        _errorMessage!,
-                        style: const TextStyle(color: Colors.red),
-                      ),
-                  ],
-                ),
-              ),
-              _loading
-                  ? const CircularProgressIndicator()
-                  : ElevatedButton(
-                onPressed: () async {
-                  if(_formKey.currentState!.validate()){
-                    await _login(
-                      _usernameController.text.trim(),
-                      _passwordController.text.trim(),
-                    );
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 63, 63, 63),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(3)
-                    )
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 40,
-                    vertical: 15,
-                  ),
-                  child: Text(
-                    "تسجيل الدخول",
-                    style: TextStyle(fontSize: 18,color: Colors.white),
+                    child: Text(
+                      "تسجيل الدخول",
+                      style: TextStyle(fontSize: 18,color: Colors.white),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

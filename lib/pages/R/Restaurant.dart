@@ -53,8 +53,9 @@ class _RestaurantState extends State<Restaurant> {
   @override
   void initState() {
     super.initState();
-    numbers = List.filled(products.length, '0');  }
-
+    numbers = List.filled(products.length, '0');
+    loadData();
+  }
   Future<void> updateNumber(int index, String value) async {
     setState(() {
       numbers[index] = value;
@@ -80,28 +81,49 @@ class _RestaurantState extends State<Restaurant> {
         backgroundColor: Colors.black,
         actions: const [LogoutButton()],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: GridView.builder(
-          itemCount: products.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: 3 / 4,
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await loadData();
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: GridView.builder(
+            itemCount: products.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 3 / 4,
+            ),
+            itemBuilder: (context, index) {
+              final product = products[index];
+              return ProductBox(
+                imageUrl: product['imageUrl'] as String,
+                name: product['name'] as String,
+                savedNumber: numbers[index],
+                onSave: (value) => updateNumber(index, value),
+              );
+            },
           ),
-          itemBuilder: (context, index) {
-            final product = products[index];
-            return ProductBox(
-              imageUrl: product['imageUrl'] as String,
-              name: product['name'] as String,
-              savedNumber: numbers[index],
-              onSave: (value) => updateNumber(index, value),
-            );
-          },
         ),
       ),
     );
+  }
+  Future<void> loadData() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+    final uid = user.uid;
+
+    final doc = await FirebaseFirestore.instance.collection('restaurants').doc(uid).get();
+    if (doc.exists) {
+      final data = doc.data()!;
+      setState(() {
+        for (int i = 0; i < products.length; i++) {
+          final productName = products[i]['name']!;
+          numbers[i] = (data[productName] ?? '0').toString();
+        }
+      });
+    }
   }
 }
 
