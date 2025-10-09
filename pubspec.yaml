@@ -71,6 +71,8 @@ flutter:
      - images/OIP (5).png
      - images/R.jpg
      - images/R (1).jpg
+     - images/logistihub1.png
+     - images/logistihub.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
