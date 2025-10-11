@@ -37,7 +37,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "6cbee6009617fcc810b15fe55ec857c7
 "canvaskit/skwasm_st.wasm": "56c3973560dfcbf28ce47cebe40f3206",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "76f08d47ff9f5715220992f993002504",
-"flutter_bootstrap.js": "62008750b6d67f104237f5d3507c032e",
+"flutter_bootstrap.js": "daf0c4e27310797544f6ad02e726120c",
 "icons/logistihub.png": "0e7850464e751d56d741fa50f29937cf",
 "icons/logistihub1.png": "9fb7255f1e76cc7d1972dff8d230a67f",
 "index.html": "3751a129a977b8a481264ddfeee668fd",
