@@ -3,12 +3,14 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "c0b3d44faf1a4203bc3553007592cabd",
-"assets/AssetManifest.bin.json": "1547e26c24f4e369437e8f678b94379e",
-"assets/AssetManifest.json": "4fc7acf9f886c96849ec07ace0697f21",
+const RESOURCES = {"assets/AssetManifest.bin": "6cbee6009617fcc810b15fe55ec857c7",
+"assets/AssetManifest.bin.json": "85088f80ab41498b08a6f42c273cb04d",
+"assets/AssetManifest.json": "88767423c94927fc4d0a1d86d4b7b35c",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "dff389a0ed0e216c9eb704e75093e1f0",
-"assets/images/logistihub.png": "22e1e7acb7b5c251f69f0083ce75daa5",
+"assets/images/icon.png": "4476146d85a59c347a3bdcb4b3165850",
+"assets/images/icons.png": "c4bb685a27339ed5f6798268d1f2faa0",
+"assets/images/logistihub.png": "0e7850464e751d56d741fa50f29937cf",
 "assets/images/logistihub1.png": "9fb7255f1e76cc7d1972dff8d230a67f",
 "assets/images/OIP%2520(1).png": "d136646dfab0e67cdbbe3ae1bb5ab503",
 "assets/images/OIP%2520(2).png": "a56f2a96585ac5cb67bb4207f050d61d",
@@ -35,15 +37,13 @@ const RESOURCES = {"assets/AssetManifest.bin": "c0b3d44faf1a4203bc3553007592cabd
 "canvaskit/skwasm_st.wasm": "56c3973560dfcbf28ce47cebe40f3206",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "76f08d47ff9f5715220992f993002504",
-"flutter_bootstrap.js": "c01920340b66da1e4c613aa1221ed1fd",
-"icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
-"icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
-"icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "e38d9c0a5a88f83be2be3ab1689ecb12",
-"/": "e38d9c0a5a88f83be2be3ab1689ecb12",
-"main.dart.js": "c8ac68bc3656feeac10e09b5e14f9ce6",
-"manifest.json": "ab24b0f82d28a7cd7a0b0eabba486a65",
+"flutter_bootstrap.js": "62008750b6d67f104237f5d3507c032e",
+"icons/logistihub.png": "0e7850464e751d56d741fa50f29937cf",
+"icons/logistihub1.png": "9fb7255f1e76cc7d1972dff8d230a67f",
+"index.html": "3751a129a977b8a481264ddfeee668fd",
+"/": "3751a129a977b8a481264ddfeee668fd",
+"main.dart.js": "c0434d75cf7384edba09965659f541c3",
+"manifest.json": "640c85f7e5ea7eee342f1c22fc0fa962",
 "version.json": "d778d12de91a5f1a78828f542c6f46cf"};
 // The application shell files that are downloaded before a service worker can
 // start.

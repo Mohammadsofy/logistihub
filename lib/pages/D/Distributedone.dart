@@ -151,119 +151,133 @@ class _DistributoroneState extends State<Distributorone> {
         backgroundColor: Colors.black,
         actions: [LogoutButton()],
       ),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          await loadData();
-        },
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          child: ScrollConfiguration(
-            behavior: const MaterialScrollBehavior().copyWith(
-              dragDevices: {
-                PointerDeviceKind.touch,
-                PointerDeviceKind.mouse,
-              },
-            ),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20, left: 20, right: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF80DEEA),
+              Color(0xFFFFECB3)
+            ],
+          ),
+        ),
+        child: RefreshIndicator(
+          onRefresh: () async {
+            await loadData();
+          },
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: ScrollConfiguration(
+              behavior: const MaterialScrollBehavior().copyWith(
+                dragDevices: {
+                  PointerDeviceKind.touch,
+                  PointerDeviceKind.mouse,
+                },
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20, left: 20, right: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
-                    Transform.translate(
-                      offset: const Offset(143, 0),
-                      child: Row(children: [
-                        buildBox("جزر"),
-                        buildBox("بصل"),
-                        buildBox("ثوم"),
-                        buildBox("خيار"),
-                        buildBox("بندورة"),
-                        buildBox("بطاطه"),
+                      Transform.translate(
+                        offset: const Offset(143, 0),
+                        child: Row(children: [
+                          buildBox("جزر"),
+                          buildBox("بصل"),
+                          buildBox("ثوم"),
+                          buildBox("خيار"),
+                          buildBox("بندورة"),
+                          buildBox("بطاطه"),
+                        ]),
+                      ),
+                      const SizedBox(height: 30),
+
+                      Row(children: [
+                        const Text('RESTAURANT'),
+                        const SizedBox(width: 53),
+                        buildBox("$restaurantCarrot"),
+                        buildBox("$restaurantOnion"),
+                        buildBox("$restaurantGarlic"),
+                        buildBox("$restaurantCucumber"),
+                        buildBox("$restaurantTomato"),
+                        buildBox("$restaurantPotato"),
+                        IconButton(
+                          icon: const Icon(Icons.restart_alt, color: Colors.red),
+                          onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
+                        ),
+
                       ]),
-                    ),
-                    const SizedBox(height: 30),
+                      const SizedBox(height: 30),
 
-                    Row(children: [
-                      const Text('RESTAURANT'),
-                      const SizedBox(width: 53),
-                      buildBox("$restaurantCarrot"),
-                      buildBox("$restaurantOnion"),
-                      buildBox("$restaurantGarlic"),
-                      buildBox("$restaurantCucumber"),
-                      buildBox("$restaurantTomato"),
-                      buildBox("$restaurantPotato"),
-                      IconButton(
-                        icon: const Icon(Icons.restart_alt, color: Colors.red),
-                        onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
-                      ),
+                      Row(children: [
+                        const Text('RESTAURANTONE'),
+                        const SizedBox(width: 25),
+                        buildBox("$restaurantoneCarrot"),
+                        buildBox("$restaurantoneOnion"),
+                        buildBox("$restaurantoneGarlic"),
+                        buildBox("$restaurantoneCucumber"),
+                        buildBox("$restaurantoneTomato"),
+                        buildBox("$restaurantonePotato"),
+                        IconButton(
+                          icon: const Icon(Icons.restart_alt, color: Colors.red),
+                          onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
+                        ),
+                      ]),
+                      const SizedBox(height: 30),
 
-                    ]),
-                    const SizedBox(height: 30),
+                      Row(children: [
+                        const Text('RESTAURANTTWO'),
+                        const SizedBox(width: 23),
+                        buildBox("$restauranttwoCarrot"),
+                        buildBox("$restauranttwoOnion"),
+                        buildBox("$restauranttwoGarlic"),
+                        buildBox("$restauranttwoCucumber"),
+                        buildBox("$restauranttwoTomato"),
+                        buildBox("$restauranttwoPotato"),
+                        IconButton(
+                          icon: const Icon(Icons.restart_alt, color: Colors.red),
+                          onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
+                        ),
+                      ]),
+                      const SizedBox(height: 30),
 
-                    Row(children: [
-                      const Text('RESTAURANTONE'),
-                      const SizedBox(width: 25),
-                      buildBox("$restaurantoneCarrot"),
-                      buildBox("$restaurantoneOnion"),
-                      buildBox("$restaurantoneGarlic"),
-                      buildBox("$restaurantoneCucumber"),
-                      buildBox("$restaurantoneTomato"),
-                      buildBox("$restaurantonePotato"),
-                      IconButton(
-                        icon: const Icon(Icons.restart_alt, color: Colors.red),
-                        onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
-                      ),
-                    ]),
-                    const SizedBox(height: 30),
+                      Row(children: [
+                        const Text('RESTAURANTTHREE'),
+                        const SizedBox(width: 10),
+                        buildBox("$restaurantthreeCarrot"),
+                        buildBox("$restaurantthreeOnion"),
+                        buildBox("$restaurantthreeGarlic"),
+                        buildBox("$restaurantthreeCucumber"),
+                        buildBox("$restaurantthreeTomato"),
+                        buildBox("$restaurantthreePotato"),
+                        IconButton(
+                          icon: const Icon(Icons.restart_alt, color: Colors.red),
+                          onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
+                        ),
 
-                    Row(children: [
-                      const Text('RESTAURANTTWO'),
-                      const SizedBox(width: 23),
-                      buildBox("$restauranttwoCarrot"),
-                      buildBox("$restauranttwoOnion"),
-                      buildBox("$restauranttwoGarlic"),
-                      buildBox("$restauranttwoCucumber"),
-                      buildBox("$restauranttwoTomato"),
-                      buildBox("$restauranttwoPotato"),
-                      IconButton(
-                        icon: const Icon(Icons.restart_alt, color: Colors.red),
-                        onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
-                      ),
-                    ]),
-                    const SizedBox(height: 30),
-
-                    Row(children: [
-                      const Text('RESTAURANTTHREE'),
-                      const SizedBox(width: 10),
-                      buildBox("$restaurantthreeCarrot"),
-                      buildBox("$restaurantthreeOnion"),
-                      buildBox("$restaurantthreeGarlic"),
-                      buildBox("$restaurantthreeCucumber"),
-                      buildBox("$restaurantthreeTomato"),
-                      buildBox("$restaurantthreePotato"),
-                      IconButton(
-                        icon: const Icon(Icons.restart_alt, color: Colors.red),
-                        onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
-                      ),
-
-                    ]),
-                    const SizedBox(height: 30),
-                    Row(children: [
-                      const Text("المجموع"),
-                      const SizedBox(width: 95),
-                      buildsum("${restaurantCarrot + restaurantoneCarrot + restauranttwoCarrot + restaurantthreeCarrot}"),
-                      buildsum("${restaurantOnion + restaurantoneOnion + restauranttwoOnion + restaurantthreeOnion}"),
-                      buildsum("${restaurantGarlic + restaurantoneGarlic + restauranttwoGarlic + restaurantthreeGarlic}"),
-                      buildsum("${restaurantCucumber + restaurantoneCucumber + restauranttwoCucumber + restaurantthreeCucumber}"),
-                      buildsum("${restaurantTomato + restaurantoneTomato + restauranttwoTomato + restaurantthreeTomato}"),
-                      buildsum("${restaurantPotato + restaurantonePotato + restauranttwoPotato + restaurantthreePotato}"),
-                    ]),
-                    const SizedBox(height: 30),
+                      ]),
+                      const SizedBox(height: 30),
+                      Row(children: [
+                        const Text("المجموع"),
+                        const SizedBox(width: 95),
+                        buildsum("${restaurantCarrot + restaurantoneCarrot + restauranttwoCarrot + restaurantthreeCarrot}"),
+                        buildsum("${restaurantOnion + restaurantoneOnion + restauranttwoOnion + restaurantthreeOnion}"),
+                        buildsum("${restaurantGarlic + restaurantoneGarlic + restauranttwoGarlic + restaurantthreeGarlic}"),
+                        buildsum("${restaurantCucumber + restaurantoneCucumber + restauranttwoCucumber + restaurantthreeCucumber}"),
+                        buildsum("${restaurantTomato + restaurantoneTomato + restauranttwoTomato + restaurantthreeTomato}"),
+                        buildsum("${restaurantPotato + restaurantonePotato + restauranttwoPotato + restaurantthreePotato}"),
+                      ]),
+                      const SizedBox(height: 30),
 
 
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

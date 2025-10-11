@@ -20,8 +20,6 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final String tole = "";
-
   bool _loading = false;
   bool _showPass = false;
   String? _errorMessage;
@@ -45,7 +43,6 @@ class _LoginPageState extends State<LoginPage> {
             .collection('users')
             .doc(user.uid)
             .get();
-//
         if (userData.exists) {
           final role = userData['role'] ?? '';
 
@@ -96,7 +93,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: const Color.fromARGB(255, 48, 0, 0),
       backgroundColor: Colors.white,
       body: RefreshIndicator(
         onRefresh: () async {
@@ -104,115 +100,164 @@ class _LoginPageState extends State<LoginPage> {
             _errorMessage = null;
           });
         },
-        child: Center(
-          child: Container(
-            width: 340,
-            height: 500,
-            padding: const EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: Colors.black, width: 2),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text(
-                  "Login",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        style: TextStyle(color: Colors.black),
-                        controller: _usernameController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.person,color: Colors.black,),
-                          labelText: "اسم المستخدم",
-                          labelStyle: TextStyle(color: Colors.black),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'الرجاء إدخال اسم المستخدم';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      TextFormField(
-                        style: TextStyle(color: Colors.black),
-                        controller: _passwordController,
-                        obscureText: !_showPass,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.lock,color: Colors.black,),
-                          labelText: "كلمة المرور",
-                          labelStyle: TextStyle(color: Colors.black),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _showPass ? Icons.visibility : Icons.visibility_off,
-                              color: Colors.black,
-                            ),
-
-                            onPressed: () {
-                              setState(() {
-                                _showPass = !_showPass;
-                              });
-                            },
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'الرجاء إدخال كلمة المرور';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 20),
-                      if (_errorMessage != null)
-                        Text(
-                          _errorMessage!,
-                          style: const TextStyle(color: Colors.red),
-                        ),
-                    ],
-                  ),
-                ),
-                _loading
-                    ? const CircularProgressIndicator()
-                    : ElevatedButton(
-                  onPressed: () async {
-                    if(_formKey.currentState!.validate()){
-                      await _login(
-                        _usernameController.text.trim(),
-                        _passwordController.text.trim(),
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 63, 63, 63),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3)
-                      )
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 15,
-                    ),
-                    child: Text(
-                      "تسجيل الدخول",
-                      style: TextStyle(fontSize: 18,color: Colors.white),
-                    ),
-                  ),
-                ),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFF80DEEA),
+                Color(0xFFFFECB3)
               ],
+            ),
+          ),
+          child: Center(
+            child: Container(
+
+              width: 340,
+              height: 500,
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withOpacity(0.5),
+                  )]
+              ),
+              child: Column(
+                children: [
+                  ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0),
+                      BlendMode.multiply,
+                    ),
+                    child: Opacity(
+                      opacity: 1,
+                      child: Image.asset(
+                          'images/icon.png',
+                        width: 100,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Login",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _usernameController,
+                          cursorColor: Colors.indigo.withOpacity(1),
+                          decoration: InputDecoration(
+                            fillColor: Colors.white.withOpacity(0.3),
+                            filled: true,
+                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.person,color: Colors.indigo.withOpacity(1),),
+                            labelText: "اسم المستخدم",
+                            labelStyle: TextStyle(color: Colors.indigo.withOpacity(1)),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'الرجاء إدخال اسم المستخدم';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 30),
+                        TextFormField(
+                          controller: _passwordController,
+                          obscureText: !_showPass,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white.withOpacity(0.3),
+                            filled: true,
+                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.lock,color: Colors.indigo.withOpacity(1),),
+                            labelText: "كلمة المرور",
+                            labelStyle: TextStyle(color: Colors.indigo.withOpacity(1)),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _showPass ? Icons.visibility : Icons.visibility_off,
+                                color: Colors.indigo.withOpacity(1),
+                              ),
+
+                              onPressed: () {
+                                setState(() {
+                                  _showPass = !_showPass;
+                                });
+                              },
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'الرجاء إدخال كلمة المرور';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 30),
+                        if (_errorMessage != null)
+                          Text(
+                            _errorMessage!,
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                      ],
+                    ),
+                  ),
+                  _loading
+                      ? const CircularProgressIndicator()
+                      : Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFF80DEEA),
+                          Color(0xFFFFECB3)
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                        child: ElevatedButton(
+
+                          onPressed: () async {
+                        if(_formKey.currentState!.validate()){
+                          await _login(
+                            _usernameController.text.trim(),
+                            _passwordController.text.trim(),
+                          );
+                        }
+                        },
+                          style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)
+                          )
+                                            ),
+                                            child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 40,
+                          vertical: 15,
+                        ),
+                        child: Text(
+                          "تسجيل الدخول",
+                          style: TextStyle(fontSize: 18,color: Colors.white),
+                        ),
+                                            ),
+                                          ),
+                      ),
+                ],
+              ),
             ),
           ),
         ),

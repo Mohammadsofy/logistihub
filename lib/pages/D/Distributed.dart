@@ -108,82 +108,96 @@ class _DistributorState extends State<Distributor> {
         backgroundColor: Colors.black,
         actions: [LogoutButton()],
       ),
-      body: RefreshIndicator(
-      onRefresh: loadData,
-      child: SingleChildScrollView(
-        physics: const AlwaysScrollableScrollPhysics(),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF80DEEA),
+              Color(0xFFFFECB3)
+            ],
+          ),
+        ),
+        child: RefreshIndicator(
+        onRefresh: loadData,
         child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 20, left: 20, right: 10, bottom: 50),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Transform.translate(
-                  offset: const Offset(143, 0),
-                  child: Row(children: [
-                    buildBox("لحمة"),
-                    buildBox("جاج"),
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 10, bottom: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Transform.translate(
+                    offset: const Offset(143, 0),
+                    child: Row(children: [
+                      buildBox("لحمة"),
+                      buildBox("جاج"),
+                    ]),
+                  ),
+                  const SizedBox(height: 30),
+                  Row(children: [
+                    const Text('RESTAURANT'),
+                    const SizedBox(width: 53),
+                    buildBox("$restaurantMeat"),
+                    buildBox("$restaurantChicken"),
+                    IconButton(
+                      icon: const Icon(Icons.restart_alt, color: Colors.red),
+                      onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
+                    ),
                   ]),
-                ),
-                const SizedBox(height: 30),
-                Row(children: [
-                  const Text('RESTAURANT'),
-                  const SizedBox(width: 53),
-                  buildBox("$restaurantMeat"),
-                  buildBox("$restaurantChicken"),
-                  IconButton(
-                    icon: const Icon(Icons.restart_alt, color: Colors.red),
-                    onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
-                  ),
-                ]),
-                const SizedBox(height: 30),
-                Row(children: [
-                  const Text('RESTAURANTONE'),
-                  const SizedBox(width: 25),
-                  buildBox("$restaurantoneMeat"),
-                  buildBox("$restaurantoneChicken"),
-                  IconButton(
-                    icon: const Icon(Icons.restart_alt, color: Colors.red),
-                    onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
-                  ),
-                ]),
-                const SizedBox(height: 30),
-                Row(children: [
-                  const Text('RESTAURANTTWO'),
-                  const SizedBox(width: 23),
-                  buildBox("$restauranttwoMeat"),
-                  buildBox("$restauranttwoChicken"),
-                  IconButton(
-                    icon: const Icon(Icons.restart_alt, color: Colors.red),
-                    onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
-                  ),
-                ]),
-                const SizedBox(height: 30),
-                Row(children: [
-                  const Text('RESTAURANTTHREE'),
-                  const SizedBox(width: 10),
-                  buildBox("$restaurantthreeMeat"),
-                  buildBox("$restaurantthreeChicken"),
-                  IconButton(
-                    icon: const Icon(Icons.restart_alt, color: Colors.red),
-                    onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
-                  ),
-                ]),
-                const SizedBox(height: 30),
-                Row(children: [
-                  const Text("المجموع"),
-                  const SizedBox(width: 95),
-                  buildsum("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
-                  buildsum("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
-                ]),
-                const SizedBox(height: 30),
-              ],
+                  const SizedBox(height: 30),
+                  Row(children: [
+                    const Text('RESTAURANTONE'),
+                    const SizedBox(width: 25),
+                    buildBox("$restaurantoneMeat"),
+                    buildBox("$restaurantoneChicken"),
+                    IconButton(
+                      icon: const Icon(Icons.restart_alt, color: Colors.red),
+                      onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
+                    ),
+                  ]),
+                  const SizedBox(height: 30),
+                  Row(children: [
+                    const Text('RESTAURANTTWO'),
+                    const SizedBox(width: 23),
+                    buildBox("$restauranttwoMeat"),
+                    buildBox("$restauranttwoChicken"),
+                    IconButton(
+                      icon: const Icon(Icons.restart_alt, color: Colors.red),
+                      onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
+                    ),
+                  ]),
+                  const SizedBox(height: 30),
+                  Row(children: [
+                    const Text('RESTAURANTTHREE'),
+                    const SizedBox(width: 10),
+                    buildBox("$restaurantthreeMeat"),
+                    buildBox("$restaurantthreeChicken"),
+                    IconButton(
+                      icon: const Icon(Icons.restart_alt, color: Colors.red),
+                      onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
+                    ),
+                  ]),
+                  const SizedBox(height: 30),
+                  Row(children: [
+                    const Text("المجموع"),
+                    const SizedBox(width: 95),
+                    buildsum("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
+                    buildsum("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
+                  ]),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    )
+            ),
+      )
     );
   }
 
