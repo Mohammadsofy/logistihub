@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import '../../logout.dart';
 
-class Restaurantthree extends StatefulWidget {
-  const Restaurantthree({super.key});
+class Restauranttwo extends StatefulWidget {
+  const Restauranttwo({super.key});
 
   @override
-  State<Restaurantthree> createState() => _RestaurantthreeState();
+  State<Restauranttwo> createState() => _RestauranttwoState();
 }
 
-class _RestaurantthreeState extends State<Restaurantthree> {
+class _RestauranttwoState extends State<Restauranttwo> {
   final products = [
     {
       'imageUrl': 'images/OIP.png',
@@ -98,7 +98,7 @@ class _RestaurantthreeState extends State<Restaurantthree> {
     final uid = user.uid;
     final productName = products[index]['name']!;
     await FirebaseFirestore.instance
-        .collection('Restaurantthrees')
+        .collection('Restauranttwos')
         .doc(uid)
         .set(
       {productName: int.tryParse(value) ?? 0},
@@ -111,7 +111,7 @@ class _RestaurantthreeState extends State<Restaurantthree> {
     if (user == null) return;
     final uid = user.uid;
 
-    final doc = await FirebaseFirestore.instance.collection('Restaurantthrees').doc(uid).get();
+    final doc = await FirebaseFirestore.instance.collection('Restauranttwos').doc(uid).get();
     if (doc.exists) {
       final data = doc.data()!;
       setState(() {
@@ -138,7 +138,7 @@ class _RestaurantthreeState extends State<Restaurantthree> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("Restaurantthree", style: TextStyle(color: Colors.white))),
+        title: const Center(child: Text("Restauranttwo", style: TextStyle(color: Colors.white))),
         backgroundColor: Colors.black,
         actions: const [LogoutButton()],
       ),
@@ -243,10 +243,10 @@ class _RestaurantthreeState extends State<Restaurantthree> {
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: sectionProducts.length,
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
+                                crossAxisCount: 2,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
-                                childAspectRatio: 2 / 4,
+                                childAspectRatio: 3 / 4,
                               ),
                               itemBuilder: (context, idx) {
                                 final index = sectionProducts[idx].key;

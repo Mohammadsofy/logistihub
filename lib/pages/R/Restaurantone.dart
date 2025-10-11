@@ -243,10 +243,10 @@ class _RestaurantoneState extends State<Restaurantone> {
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: sectionProducts.length,
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
+                                crossAxisCount: 2,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
-                                childAspectRatio: 2 / 4,
+                                childAspectRatio: 3 / 4,
                               ),
                               itemBuilder: (context, idx) {
                                 final index = sectionProducts[idx].key;
