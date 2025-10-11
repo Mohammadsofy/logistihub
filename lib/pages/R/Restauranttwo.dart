@@ -16,57 +16,56 @@ class _RestauranttwoState extends State<Restauranttwo> {
     {
       'imageUrl': 'images/OIP.png',
       'name': 'جزر',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (1).png',
       'name': 'جاج',
-      'section': 'لحوم',
+      'section': 'لحوم و دواجن',
     },
     {
       'imageUrl': 'images/OIP (2).png',
       'name': 'بصل',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (3).png',
       'name': 'ثوم',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (4).jpg',
       'name': 'خيار',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (5).png',
       'name': 'بندورة',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/R.jpg',
       'name': 'بطاطه',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/R (1).jpg',
       'name': 'لحمة',
-      'section': 'لحوم',
+      'section': 'لحوم و دواجن',
     },
     {
-      'imageUrl': 'images/R (1).jpg',
-      'name': 'تفاح',
-      'section': 'فواكه',
+      'imageUrl': 'images/toastbread.jpg',
+      'name': 'توست',
+      'section': 'مخبوزات',
     },
     {
-      'imageUrl': 'images/R (1).jpg',
-      'name': 'موز',
-      'section': 'فواكه',
+      'imageUrl': 'images/whitebread.jpg',
+      'name': 'خبز ابيض',
+      'section': 'مخبوزات',
     },
   ];
-
-  final List<String> sections = ['خضار', 'فواكه', 'لحوم'];
-
+//
+  final List<String> sections = ['خضار و فواكه', 'مخبوزات','لحوم و دواجن'];
   late List<String> numbers;
   final Map<String, GlobalKey> sectionKeys = {};
   final ScrollController _scrollController = ScrollController();
@@ -98,7 +97,7 @@ class _RestauranttwoState extends State<Restauranttwo> {
     final uid = user.uid;
     final productName = products[index]['name']!;
     await FirebaseFirestore.instance
-        .collection('Restauranttwos')
+        .collection('restaurants')
         .doc(uid)
         .set(
       {productName: int.tryParse(value) ?? 0},
@@ -111,7 +110,7 @@ class _RestauranttwoState extends State<Restauranttwo> {
     if (user == null) return;
     final uid = user.uid;
 
-    final doc = await FirebaseFirestore.instance.collection('Restauranttwos').doc(uid).get();
+    final doc = await FirebaseFirestore.instance.collection('restaurants').doc(uid).get();
     if (doc.exists) {
       final data = doc.data()!;
       setState(() {
@@ -197,7 +196,6 @@ class _RestauranttwoState extends State<Restauranttwo> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                // المنتجات بأقسامها
                 Expanded(
                   child: SingleChildScrollView(
                     controller: _scrollController,
@@ -237,7 +235,7 @@ class _RestauranttwoState extends State<Restauranttwo> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ),//
                             GridView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),

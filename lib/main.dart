@@ -1,5 +1,6 @@
 import 'package:complex/pages/D/Distributed.dart';
 import 'package:complex/pages/D/Distributedone.dart';
+import 'package:complex/pages/D/Distributedtwo.dart';
 import 'package:complex/pages/R/Restaurant.dart';
 import 'package:complex/pages/R/Restaurantone.dart';
 import 'package:complex/pages/R/Restaurantthree.dart';
@@ -27,10 +28,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/Login',
       routes: {//
         '/Login': (context) => const LoginPage(),
+        '/distributed': (context) => const Distributed(),
+        '/distributedone': (context) => const Distributedone(),
+        '/distributedtwo': (context) => const Distributedtwo(),
         '/restaurant': (context) => const Restaurant(),
-        '/distributedone': (context) => const Distributorone(),
         '/restaurantthree': (context) => const Restaurantthree(),
-        '/distributed': (context) => const Distributor(),
         '/restauranttwo': (context) => const Restauranttwo(),
         '/restaurantone': (context) => const Restaurantone(),
 

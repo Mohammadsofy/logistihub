@@ -50,7 +50,8 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.pushReplacementNamed(context, '/distributed');
           } else if (role == 'distributorone') {
             Navigator.pushReplacementNamed(context, '/distributedone');
-
+          }else if (role == 'distributedtwo') {
+            Navigator.pushReplacementNamed(context, '/distributedtwo');
           } else if (role == 'restaurant') {
             Navigator.pushReplacementNamed(context, '/restaurant');
 
@@ -61,7 +62,8 @@ class _LoginPageState extends State<LoginPage> {
 
           } else if (role == 'restaurantthree') {
             Navigator.pushReplacementNamed(context, '/restaurantthree');
-          } else {
+          }
+          else {//
             setState(() {
               _errorMessage = "هذا المستخدم ليس له صلاحية الدخول";
             });

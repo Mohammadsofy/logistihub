@@ -4,23 +4,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:complex/logout.dart';
 import 'package:flutter/material.dart';
 
-class Distributed extends StatefulWidget {
-  const Distributed({super.key});
+class Distributedtwo extends StatefulWidget {
+  const Distributedtwo({super.key});
 
   @override
-  State<Distributed> createState() => _DistributedState();
+  State<Distributedtwo> createState() => _DistributedtwoState();
 }
 
-class _DistributedState extends State<Distributed> {
-  int restaurantMeat = 0;
-  int restaurantoneMeat = 0;
-  int restauranttwoMeat = 0;
-  int restaurantthreeMeat = 0;
+class _DistributedtwoState extends State<Distributedtwo> {
+  //
+  int restaurantwhitebread = 0;
+  int restaurantonewhitebread = 0;
+  int restauranttwowhitebread = 0;
+  int restaurantthreewhitebread = 0;
 
-  int restaurantChicken=0;
-  int restaurantoneChicken=0;
-  int restauranttwoChicken=0;
-  int restaurantthreeChicken=0;
+  int restauranttoastbread=0;
+  int restaurantonetoastbread=0;
+  int restauranttwotoastbread=0;
+  int restaurantthreetoastbread=0;
 
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -45,25 +46,25 @@ class _DistributedState extends State<Distributed> {
     setState(() {
       if (res1.exists) {
         final data = res1.data()!;
-        restaurantChicken = data['جاج'] ?? 0;
-        restaurantMeat = data['لحمة'] ?? 0;
+        restauranttoastbread =data['توست']??0;
+        restaurantwhitebread = data['خبز ابيض'] ?? 0;
 
       }
       if (res2.exists) {
         final data = res2.data()!;
-        restaurantoneChicken= data['جاج'] ?? 0;
-        restaurantoneMeat = data['لحمة'] ?? 0;
+        restaurantonetoastbread= data['توست']??0;
+        restaurantonewhitebread = data['خبز ابيض'] ?? 0;
 
       }
       if (res3.exists) {
         final data = res3.data()!;
-        restauranttwoChicken = data['جاج'] ?? 0;
-        restauranttwoMeat = data['لحمة'] ?? 0;
+        restauranttwotoastbread = data['توست']??0;
+        restauranttwowhitebread = data['خبز ابيض'] ?? 0;
       }
       if (res4.exists) {
         final data = res4.data()!;
-        restaurantthreeChicken = data['جاج'] ?? 0;
-        restaurantthreeMeat = data['لحمة'] ?? 0;
+        restaurantthreetoastbread = data['توست']??0;
+        restaurantthreewhitebread = data['خبز ابيض'] ?? 0;
       }
     });
   }
@@ -88,8 +89,8 @@ class _DistributedState extends State<Distributed> {
     );
     if (confirmed == true) {
       await firestore.collection('restaurants').doc(uid).update({
-        'جاج': 0,
-        'لحمة': 0,
+        'توست': 0,
+        'خبز ابيض': 0,
 
       });
     }
@@ -135,16 +136,16 @@ class _DistributedState extends State<Distributed> {
                       Transform.translate(
                         offset: const Offset(143, 0),
                         child: Row(children: [
-                          buildBox('جاج'),
-                          buildBox('لحمة'),
+                          buildBox('توست'),
+                          buildBox('خبز ابيض'),
                         ]),
                       ),
                       const SizedBox(height: 30),
                       Row(children: [
                         const Text('RESTAURANT'),
                         const SizedBox(width: 53),
-                        buildBox("$restaurantMeat"),
-                        buildBox("$restaurantChicken"),
+                        buildBox("$restauranttoastbread"),
+                        buildBox("$restaurantwhitebread"),
                         IconButton(
                           icon: const Icon(Icons.restart_alt, color: Colors.red),
                           onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
@@ -154,8 +155,8 @@ class _DistributedState extends State<Distributed> {
                       Row(children: [
                         const Text('RESTAURANTONE'),
                         const SizedBox(width: 25),
-                        buildBox("$restaurantoneMeat"),
-                        buildBox("$restaurantoneChicken"),
+                        buildBox("$restaurantonetoastbread"),
+                        buildBox("$restaurantonewhitebread"),
                         IconButton(
                           icon: const Icon(Icons.restart_alt, color: Colors.red),
                           onPressed: () => resetRestaurant('spuesGx3irRXQhkxVrEk1vtCdvZ2'),
@@ -165,8 +166,8 @@ class _DistributedState extends State<Distributed> {
                       Row(children: [
                         const Text('RESTAURANTTWO'),
                         const SizedBox(width: 23),
-                        buildBox("$restauranttwoMeat"),
-                        buildBox("$restauranttwoChicken"),
+                        buildBox("$restauranttwotoastbread"),
+                        buildBox("$restauranttwowhitebread"),
                         IconButton(
                           icon: const Icon(Icons.restart_alt, color: Colors.red),
                           onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
@@ -176,8 +177,8 @@ class _DistributedState extends State<Distributed> {
                       Row(children: [
                         const Text('RESTAURANTTHREE'),
                         const SizedBox(width: 10),
-                        buildBox("$restaurantthreeMeat"),
-                        buildBox("$restaurantthreeChicken"),
+                        buildBox("$restaurantthreetoastbread"),
+                        buildBox("$restaurantthreewhitebread"),
                         IconButton(
                           icon: const Icon(Icons.restart_alt, color: Colors.red),
                           onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
@@ -187,8 +188,8 @@ class _DistributedState extends State<Distributed> {
                       Row(children: [
                         const Text("المجموع"),
                         const SizedBox(width: 95),
-                        buildsum("${restaurantMeat + restaurantoneMeat + restauranttwoMeat + restaurantthreeMeat}"),
-                        buildsum("${restaurantChicken + restaurantoneChicken + restauranttwoChicken + restaurantthreeChicken}"),
+                        buildsum("${restauranttoastbread + restaurantonetoastbread + restauranttwowhitebread + restaurantthreetoastbread}"),
+                        buildsum("${restaurantwhitebread + restaurantonewhitebread + restauranttwowhitebread + restaurantthreewhitebread}"),
                       ]),
                       const SizedBox(height: 30),
                     ],

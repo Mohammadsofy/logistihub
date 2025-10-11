@@ -16,57 +16,56 @@ class _RestaurantState extends State<Restaurant> {
     {
       'imageUrl': 'images/OIP.png',
       'name': 'جزر',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (1).png',
       'name': 'جاج',
-      'section': 'لحوم',
+      'section': 'لحوم و دواجن',
     },
     {
       'imageUrl': 'images/OIP (2).png',
       'name': 'بصل',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (3).png',
       'name': 'ثوم',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (4).jpg',
       'name': 'خيار',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (5).png',
       'name': 'بندورة',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/R.jpg',
       'name': 'بطاطه',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/R (1).jpg',
       'name': 'لحمة',
-      'section': 'لحوم',
+      'section': 'لحوم و دواجن',
     },
     {
-      'imageUrl': 'images/R (1).jpg',
-      'name': 'تفاح',
-      'section': 'فواكه',
+      'imageUrl': 'images/toastbread.jpg',
+      'name': 'توست',
+      'section': 'مخبوزات',
     },
     {
-      'imageUrl': 'images/R (1).jpg',
-      'name': 'موز',
-      'section': 'فواكه',
+      'imageUrl': 'images/whitebread.jpg',
+      'name': 'خبز ابيض',
+      'section': 'مخبوزات',
     },
   ];
-
-  final List<String> sections = ['خضار', 'فواكه', 'لحوم'];
-
+//
+  final List<String> sections = ['خضار و فواكه', 'مخبوزات','لحوم و دواجن'];
   late List<String> numbers;
   final Map<String, GlobalKey> sectionKeys = {};
   final ScrollController _scrollController = ScrollController();
@@ -182,11 +181,11 @@ class _RestaurantState extends State<Restaurant> {
                           ),
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              )
+                                backgroundColor: Colors.transparent,
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                )
                             ),
                             onPressed: () => _scrollToSection(section),
                             child: Text(section),
@@ -197,7 +196,6 @@ class _RestaurantState extends State<Restaurant> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                // المنتجات بأقسامها
                 Expanded(
                   child: SingleChildScrollView(
                     controller: _scrollController,
@@ -237,7 +235,7 @@ class _RestaurantState extends State<Restaurant> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ),//
                             GridView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
@@ -246,7 +244,7 @@ class _RestaurantState extends State<Restaurant> {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
-                                childAspectRatio: 3/ 4,
+                                childAspectRatio: 3 / 4,
                               ),
                               itemBuilder: (context, idx) {
                                 final index = sectionProducts[idx].key;
@@ -376,11 +374,11 @@ class _ProductBoxState extends State<ProductBox> {
                 child: ElevatedButton(
                   onPressed: handleSave,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                    )
+                      backgroundColor: Colors.transparent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      )
                   ),
                   child: const Text('حفظ',),
                 ),

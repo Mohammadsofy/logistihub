@@ -75,6 +75,8 @@ flutter:
      - images/logistihub.png
      - images/icons.png
      - images/icon.png
+     - images/whitebread.jpg
+     - images/toastbread.jpg
     #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

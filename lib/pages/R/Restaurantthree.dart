@@ -16,57 +16,56 @@ class _RestaurantthreeState extends State<Restaurantthree> {
     {
       'imageUrl': 'images/OIP.png',
       'name': 'جزر',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (1).png',
       'name': 'جاج',
-      'section': 'لحوم',
+      'section': 'لحوم و دواجن',
     },
     {
       'imageUrl': 'images/OIP (2).png',
       'name': 'بصل',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (3).png',
       'name': 'ثوم',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (4).jpg',
       'name': 'خيار',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/OIP (5).png',
       'name': 'بندورة',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/R.jpg',
       'name': 'بطاطه',
-      'section': 'خضار',
+      'section': 'خضار و فواكه',
     },
     {
       'imageUrl': 'images/R (1).jpg',
       'name': 'لحمة',
-      'section': 'لحوم',
+      'section': 'لحوم و دواجن',
     },
     {
-      'imageUrl': 'images/R (1).jpg',
-      'name': 'تفاح',
-      'section': 'فواكه',
+      'imageUrl': 'images/toastbread.jpg',
+      'name': 'توست',
+      'section': 'مخبوزات',
     },
     {
-      'imageUrl': 'images/R (1).jpg',
-      'name': 'موز',
-      'section': 'فواكه',
+      'imageUrl': 'images/whitebread.jpg',
+      'name': 'خبز ابيض',
+      'section': 'مخبوزات',
     },
   ];
-
-  final List<String> sections = ['خضار', 'فواكه', 'لحوم'];
-
+//
+  final List<String> sections = ['خضار و فواكه', 'مخبوزات','لحوم و دواجن'];
   late List<String> numbers;
   final Map<String, GlobalKey> sectionKeys = {};
   final ScrollController _scrollController = ScrollController();
@@ -98,7 +97,7 @@ class _RestaurantthreeState extends State<Restaurantthree> {
     final uid = user.uid;
     final productName = products[index]['name']!;
     await FirebaseFirestore.instance
-        .collection('Restaurantthrees')
+        .collection('restaurants')
         .doc(uid)
         .set(
       {productName: int.tryParse(value) ?? 0},
@@ -111,7 +110,7 @@ class _RestaurantthreeState extends State<Restaurantthree> {
     if (user == null) return;
     final uid = user.uid;
 
-    final doc = await FirebaseFirestore.instance.collection('Restaurantthrees').doc(uid).get();
+    final doc = await FirebaseFirestore.instance.collection('restaurants').doc(uid).get();
     if (doc.exists) {
       final data = doc.data()!;
       setState(() {
@@ -138,7 +137,7 @@ class _RestaurantthreeState extends State<Restaurantthree> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text("Restaurantthree", style: TextStyle(color: Colors.white))),
+        title: const Center(child: Text("Restaurantone", style: TextStyle(color: Colors.white))),
         backgroundColor: Colors.black,
         actions: const [LogoutButton()],
       ),
@@ -197,7 +196,6 @@ class _RestaurantthreeState extends State<Restaurantthree> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                // المنتجات بأقسامها
                 Expanded(
                   child: SingleChildScrollView(
                     controller: _scrollController,
@@ -237,7 +235,7 @@ class _RestaurantthreeState extends State<Restaurantthree> {
                                   ),
                                 ),
                               ),
-                            ),
+                            ),//
                             GridView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),

@@ -4,14 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:complex/logout.dart';
 import 'package:flutter/material.dart';
 
-class Distributorone extends StatefulWidget {
-  const Distributorone({super.key});
+class Distributedone extends StatefulWidget {
+  const Distributedone({super.key});
 
   @override
-  State<Distributorone> createState() => _DistributoroneState();
+  State<Distributedone> createState() => _DistributedoneState();
 }
 
-class _DistributoroneState extends State<Distributorone> {
+class _DistributedoneState extends State<Distributedone> {
   //جزر
   int restaurantCarrot = 0;
   int restaurantoneCarrot = 0;
@@ -108,6 +108,7 @@ class _DistributoroneState extends State<Distributorone> {
     });
   }
 
+
   void resetRestaurant(String uid) async {
     final confirmed = await showDialog<bool>(
       context: context,
@@ -141,63 +142,52 @@ class _DistributoroneState extends State<Distributorone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Text(
-            "DISTRIBUTED",
-            style: TextStyle(color: Colors.white),
+        appBar: AppBar(
+          title: const Center(
+            child: Text(
+              "DISTRIBUTED",
+              style: TextStyle(color: Colors.white),
+            ),
           ),
+          backgroundColor: Colors.black,
+          actions: [LogoutButton()],
         ),
-        backgroundColor: Colors.black,
-        actions: [LogoutButton()],
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF80DEEA),
-              Color(0xFFFFECB3)
-            ],
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFF80DEEA),
+                Color(0xFFFFECB3)
+              ],
+            ),
           ),
-        ),
-        child: RefreshIndicator(
-          onRefresh: () async {
-            await loadData();
-          },
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: ScrollConfiguration(
-              behavior: const MaterialScrollBehavior().copyWith(
-                dragDevices: {
-                  PointerDeviceKind.touch,
-                  PointerDeviceKind.mouse,
-                },
-              ),
+          child: RefreshIndicator(
+            onRefresh: loadData,
+            child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 20, right: 10),
+                  padding: const EdgeInsets.only(top: 20, left: 20, right: 10, bottom: 50),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       Transform.translate(
                         offset: const Offset(143, 0),
                         child: Row(children: [
-                          buildBox("جزر"),
-                          buildBox("بصل"),
-                          buildBox("ثوم"),
-                          buildBox("خيار"),
-                          buildBox("بندورة"),
-                          buildBox("بطاطه"),
+                          buildBox('جزر'),
+                          buildBox('بصل'),
+                          buildBox('ثوم'),
+                          buildBox('خيار'),
+                          buildBox('بندورة'),
+                          buildBox('بطاطه'),
                         ]),
                       ),
                       const SizedBox(height: 30),
-
                       Row(children: [
                         const Text('RESTAURANT'),
                         const SizedBox(width: 53),
@@ -211,10 +201,8 @@ class _DistributoroneState extends State<Distributorone> {
                           icon: const Icon(Icons.restart_alt, color: Colors.red),
                           onPressed: () => resetRestaurant('dZaAycORyoQWtRtLN4r2qdm6Jlo1'),
                         ),
-
                       ]),
                       const SizedBox(height: 30),
-
                       Row(children: [
                         const Text('RESTAURANTONE'),
                         const SizedBox(width: 25),
@@ -230,7 +218,6 @@ class _DistributoroneState extends State<Distributorone> {
                         ),
                       ]),
                       const SizedBox(height: 30),
-
                       Row(children: [
                         const Text('RESTAURANTTWO'),
                         const SizedBox(width: 23),
@@ -240,13 +227,12 @@ class _DistributoroneState extends State<Distributorone> {
                         buildBox("$restauranttwoCucumber"),
                         buildBox("$restauranttwoTomato"),
                         buildBox("$restauranttwoPotato"),
-                        IconButton(
+                      IconButton(
                           icon: const Icon(Icons.restart_alt, color: Colors.red),
                           onPressed: () => resetRestaurant('S6T9EwZGopMgPsTFpZF01BVcpmn2'),
                         ),
                       ]),
                       const SizedBox(height: 30),
-
                       Row(children: [
                         const Text('RESTAURANTTHREE'),
                         const SizedBox(width: 10),
@@ -260,7 +246,6 @@ class _DistributoroneState extends State<Distributorone> {
                           icon: const Icon(Icons.restart_alt, color: Colors.red),
                           onPressed: () => resetRestaurant('djXHszgUsCaqBb8ByJwJbjg1ec12'),
                         ),
-
                       ]),
                       const SizedBox(height: 30),
                       Row(children: [
@@ -274,16 +259,13 @@ class _DistributoroneState extends State<Distributorone> {
                         buildsum("${restaurantPotato + restaurantonePotato + restauranttwoPotato + restaurantthreePotato}"),
                       ]),
                       const SizedBox(height: 30),
-
-
                     ],
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ),
+        )
     );
   }
 
@@ -291,7 +273,7 @@ class _DistributoroneState extends State<Distributorone> {
   Widget buildBox(String text) {
     return Container(
       height: 50,
-      width: 70,
+      width: 100,
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         border: Border.all(width: 1),
@@ -304,7 +286,7 @@ class _DistributoroneState extends State<Distributorone> {
   Widget buildsum(String text) {
     return Container(
       height: 50,
-      width: 70,
+      width: 100,
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.red, width: 3),
