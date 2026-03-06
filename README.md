@@ -1,16 +1,34 @@
-# complex
+# 🚚 LogistiHub
 
-A new Flutter project.
+A multi-platform Flutter app that connects distributors with restaurants, shops, and businesses replacing phone calls with an organised digital ordering system.
 
-## Getting Started
+Created as a training project to enhance my skills. 💪
 
-This project is a starting point for a Flutter application.
+## 💡 Problem Solved
 
-A few resources to get you started if this is your first Flutter project:
+When a restaurant needs 5 kg of meat, instead of calling the distributor and risking forgetting the order they place the order directly on LogistiHub. The distributor sees the order immediately on their dashboard.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## ✨ Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**For restaurants and shops:**
+- Browse available product categories
+- Place orders by selecting the quantity for each item
+- Edit or delete existing orders
+
+**For distributors:**
+- View all incoming orders in real time
+- See who ordered and how much
+- Delete orders that have been delivered
+
+## 🛠️ Built with
+- Flutter : cross-platform user interface (Android, iOS, and web)
+- Firebase Firestore : real-time database
+- Firebase Auth : login system for distributors and customers
+
+## 📱 Supported platforms
+- Android
+- iOS
+- Web
+
+## 📌 Status
+Released but currently limited to invited users only (beta).
